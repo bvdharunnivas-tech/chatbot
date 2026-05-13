@@ -31,6 +31,10 @@
             </div>
             
             <div class="sidebar-footer">
+                <button class="settings-btn" id="loginBtn">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Sign In</span>
+                </button>
                 <button class="settings-btn" id="settingsBtn">
                     <i class="fas fa-cog"></i>
                     <span>Settings</span>
@@ -55,6 +59,21 @@
                         <i class="fas fa-bolt logo-icon"></i>
                     </div>
                     <h2 id="welcomeText">Welcome to Dharun's Ai Chatbot</h2>
+                    
+                    <!-- Auth Section -->
+                    <div class="auth-options" id="authOptions">
+                        <p>Sign in to sync your chats across devices</p>
+                        <div class="auth-buttons">
+                            <button class="social-auth-btn google" onclick="handleSocialLogin('Google')">
+                                <i class="fab fa-google"></i>
+                                <span>Sign in with Google</span>
+                            </button>
+                            <button class="social-auth-btn apple" onclick="handleSocialLogin('Apple')">
+                                <i class="fab fa-apple"></i>
+                                <span>Sign in with Apple</span>
+                            </button>
+                        </div>
+                    </div>
                     <div class="suggestion-grid">
                         <div class="suggestion-card" onclick="setInput('Explain quantum computing in simple terms')">
                             <p>Explain quantum computing</p>

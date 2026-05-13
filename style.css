@@ -245,8 +245,18 @@ body {
     animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.pulse-highlight {
+    animation: pulse-glow 2s ease-in-out;
+}
+
+@keyframes pulse-glow {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+    50% { transform: scale(1.02); box-shadow: 0 0 30px 10px rgba(99, 102, 241, 0.3); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+}
+
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -305,6 +315,58 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.02em;
+}
+
+.auth-options {
+    margin: 20px 0 35px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.auth-options p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.social-auth-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    border-radius: 14px;
+    border: 1px solid var(--glass-border);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-auth-btn i {
+    font-size: 1.2rem;
+}
+
+.social-auth-btn.google:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 25px rgba(66, 133, 244, 0.4);
+    border-color: #4285f4;
+    transform: translateY(-2px);
+}
+
+.social-auth-btn.apple:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    border-color: #ffffff;
+    transform: translateY(-2px);
 }
 
 .suggestion-grid {

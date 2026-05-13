@@ -90,6 +90,8 @@ function init() {
     }
 }
 
+const loginBtn = document.getElementById('loginBtn');
+
 // Event Listeners
 toggleSidebarBtn.addEventListener('click', () => {
     sidebar.classList.toggle('collapsed');
@@ -718,6 +720,61 @@ Guidelines: Provide extremely accurate, helpful, and fact-checked information ba
         }
     }
 }
+
+function handleSocialLogin(provider) {
+    console.log(`Signing in with ${provider}...`);
+    
+    // Simulate a premium sign-in experience
+    const btn = event.currentTarget;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> <span>Connecting...</span>`;
+    btn.disabled = true;
+
+    setTimeout(() => {
+        const mockNames = {
+            'Google': 'Google User',
+            'Apple': 'Apple User'
+        };
+        
+        userName = mockNames[provider] || 'Social User';
+        localStorage.setItem('dharun_bot_username', userName);
+        
+        if (userNameInput) userNameInput.value = userName;
+        welcomeText.textContent = `Welcome back to Dharun's Ai Chatbot, ${userName}!`;
+        
+        // Hide auth options after login
+        const authOptions = document.getElementById('authOptions');
+        if (authOptions) authOptions.style.display = 'none';
+        
+        // Update sidebar button
+        if (loginBtn) {
+            loginBtn.innerHTML = `<i class="fas fa-user-check"></i> <span>${userName}</span>`;
+            loginBtn.style.color = 'var(--accent-primary)';
+        }
+
+        btn.innerHTML = `<i class="fas fa-check"></i> <span>Signed in with ${provider}</span>`;
+        
+        // Optional: show a small toast or notification
+        alert(`Successfully signed in with ${provider}!`);
+    }, 1500);
+}
+
+if (loginBtn) {
+    loginBtn.addEventListener('click', () => {
+        if (welcomeScreen.style.display !== 'none') {
+            const authOptions = document.getElementById('authOptions');
+            if (authOptions) {
+                authOptions.scrollIntoView({ behavior: 'smooth' });
+                authOptions.classList.add('pulse-highlight');
+                setTimeout(() => authOptions.classList.remove('pulse-highlight'), 2000);
+            }
+        } else {
+            createNewChat();
+        }
+    });
+}
+
+window.handleSocialLogin = handleSocialLogin;
 
 // Start app
 init();
