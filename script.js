@@ -709,13 +709,8 @@ Guidelines: Provide extremely accurate, helpful, and fact-checked information ba
             try {
                 const parsed = JSON.parse(data);
                 const content = parsed.choices?.[0]?.delta?.content || "";
-                const reasoning = parsed.choices?.[0]?.delta?.reasoning || "";
-                
                 if (content) {
                     onChunk(content);
-                } else if (reasoning) {
-                    // For now, we append reasoning as well, but you might want to style it differently
-                    onChunk(reasoning);
                 }
             } catch (e) {
                 console.error("Error parsing JSON chunk:", e, data);
