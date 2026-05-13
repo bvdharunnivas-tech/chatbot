@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dharun's Ai Chatbot</title>
+    <meta name="description" content="A premium AI chatbot interface">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="new-chat-btn" id="newChatBtn">
+                    <i class="fas fa-plus"></i>
+                    <span>New Chat</span>
+                </button>
+                <button class="toggle-sidebar-btn" id="toggleSidebarBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="chat-history">
+                <p class="history-label">Recent</p>
+                <ul class="history-list" id="historyList">
+                    <!-- History items will go here -->
+                </ul>
+            </div>
+            
+            <div class="sidebar-footer">
+                <button class="settings-btn" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="main-content">
+            <header class="mobile-header">
+                <button class="toggle-sidebar-btn mobile-toggle" id="mobileToggleBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1>Dharun's Ai Chatbot</h1>
+                <div style="width: 24px;"></div> <!-- Spacer -->
+            </header>
+            
+            <div class="chat-container" id="chatContainer">
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="vibrant-logo-container">
+                        <div class="glow-orb"></div>
+                        <i class="fas fa-bolt logo-icon"></i>
+                    </div>
+                    <h2 id="welcomeText">Welcome to Dharun's Ai Chatbot</h2>
+                    <div class="suggestion-grid">
+                        <div class="suggestion-card" onclick="setInput('Explain quantum computing in simple terms')">
+                            <p>Explain quantum computing</p>
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="suggestion-card" onclick="setInput('Help me write a professional email to my boss')">
+                            <p>Write a professional email</p>
+                            <i class="fas fa-pen"></i>
+                        </div>
+                        <div class="suggestion-card" onclick="setInput('Give me a 3-day workout routine')">
+                            <p>Plan a workout routine</p>
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="suggestion-card" onclick="setInput('What are some good dinner ideas with chicken and rice?')">
+                            <p>Dinner ideas</p>
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="messages" id="messages">
+                    <!-- Messages will appear here -->
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area-container">
+                <div class="input-area">
+                    <div id="filePreviewContainer" class="file-preview-container"></div>
+                    <div class="input-wrapper">
+                        <input type="file" id="fileInput" hidden multiple accept="image/*, .pdf, .txt, .doc, .docx">
+                        <button id="attachBtn" title="Attachments"><i class="fas fa-plus"></i></button>
+                        <textarea id="userInput" placeholder="Message Dharun's Ai Chatbot..." rows="1"></textarea>
+                        <div class="input-actions">
+                            <button id="micBtn" title="Voice Input"><i class="fas fa-microphone"></i></button>
+                            <button id="sendBtn" disabled title="Send Message">
+                                <i class="fas fa-paper-plane send-icon"></i>
+                                <i class="fas fa-stop stop-icon" style="display: none;"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="disclaimer">AI can make mistakes. Consider verifying important information.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Settings</h3>
+                <button class="close-modal-btn" id="closeSettingsBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="userName">Your Name</label>
+                    <input type="text" id="userName" placeholder="What should I call you?">
+                </div>
+                <div class="form-group">
+                    <label for="themeSelect">Theme</label>
+                    <select id="themeSelect">
+                        <option value="dark">Premium Dark</option>
+                        <option value="neon">Vibrant Neon</option>
+                        <option value="light">Light Mode</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="apiKey">Gemini API Key</label>
+                    <input type="password" id="apiKey" placeholder="Enter your Google Gemini API key">
+                    <p class="help-text">
+                        Get your free API key from <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a>.
+                        Your key is stored locally in your browser.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="save-btn" id="saveSettingsBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
